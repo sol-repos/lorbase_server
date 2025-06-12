@@ -1,4 +1,4 @@
-exports.Card = class Card {
+module.exports = class Card {
     setNumber;
     factionIdentifier;
     cardNumber;

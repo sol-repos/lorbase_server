@@ -1,4 +1,4 @@
-exports.CardCopies = class CardCopies {
+module.exports = class CardCopies {
     card;
     amount;
 

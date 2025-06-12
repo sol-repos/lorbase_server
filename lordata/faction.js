@@ -1,4 +1,4 @@
-exports.Faction = class Faction {
+module.exports = class Faction {
     _number;
     static numberToIdentifier = {
         0: "DE",

@@ -1,13 +1,13 @@
 const base32 = require('hi-base32');
 const VarInt = require('./VarInt');
-const { Faction } = require('./faction');
-const { Card } = require('./card');
-const { CardCopies } = require('./card-copies');
+const Faction = require('./faction');
+const Card = require('./card');
+const CardCopies = require('./card-copies');
 
 const MAX_KNOWN_VERSION = 5
 const FORMAT = 1
 
-exports.Deck = class Deck {
+module.exports = class Deck {
     format;
     version;
     cards;

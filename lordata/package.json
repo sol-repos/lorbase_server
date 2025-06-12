@@ -1,0 +1,15 @@
+{
+  "name": "lordata",
+  "version": "1.0.0",
+  "main": "lordata.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Sol",
+  "license": "ISC",
+  "description": "",
+  "type": "commonjs",
+  "dependencies": {
+    "hi-base32": "^0.5.1"
+  }
+}
