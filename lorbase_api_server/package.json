@@ -1,0 +1,17 @@
+{
+  "name": "lordraft",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Sol",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "hi-base32": "^0.5.1",
+    "sqlite3": "^5.1.7"
+  }
+}
