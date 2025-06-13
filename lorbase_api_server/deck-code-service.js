@@ -1,4 +1,4 @@
-const { Deck } = require('../data-classes/deck');
+const { Deck } = require('../lordata/lordata');
 
 const jsonEncodedColumns = [
     'associatedCards',

@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const { setupDatabaseApi } = require('./database-api-server/database-api.js');
+const { setupDatabaseApi } = require('./database-api.js');
 
-const DB_PATH = '../lorbase.db';
-const RESSOURCES_PATH = '../public_ressources';
+const DB_PATH = '../../lorbase.db';
+const RESSOURCES_PATH = '../../public_ressources';
 const PORT = 3000;
 
 const app = express();
