@@ -51,4 +51,12 @@ module.exports = class Deck {
         }
         return new Deck(format, version, cards);
     }
+
+    toJson() {
+        return {
+            format: this.format,
+            version: this.version,
+            cards: this.cards.map(cardCopies => cardCopies.toJson())
+        };
+    }
 }
