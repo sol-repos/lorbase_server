@@ -1,3 +1,4 @@
+// all other mocked data is mostly in reference to this deck
 exports.testingDeckCode = "CUBACBQMAYAQODAPAMAQIBZ6AEDAYAQCAUFB3IIBEYAQGAIDAECAABIBAQAQKAIEBEHQCBQDCYAQMBIMAEDQMKQBA4GAYAIIBICQCCAGBAAQQAQVAEEASLIBBAGA4AIIAUCACCIKBUAQSARNAEEQSAQCAIDC4LYCAIAAEBQCAMAAWDICAQBAKCYCAYCAQFIDAEBSUKZMAMAQICA3FABQCBIECUVAGBAGAQDASAYEA4BRGUYDAUBAOFI2AMDAUGQ6FABQMBQLC4VQGBQABIPCUAYJAAQSEJYEAEAQSIZGFMCACAQJB4QCSBADBEBASUKXAUAQADANCULC2BQFBIJTUWDJQUA3AAIGAYGACBIIBEMRU";
 
 exports.testingDeckJson = {
@@ -1580,11 +1581,32 @@ exports.testingDeckWithCardCodeJson = {
 
 exports.dbCardResponse = [
     {
-        "keywords": '["Elusive", "Ephemeral"]',
-        "name": "Test Card 1",
+        "keywords": '[]',
+        "name": "Jhin",
+        "cardCode": "06RU002"
     },
     {
-        "keywords": '[]',
-        "name": "Test Card 2",
+        "keywords": '["Elusive", "Attach"]',
+        "name": "Rainbowfish",
+        "cardCode": "05BC019"
     }
 ];
+
+exports.dbCardCopiesJson = [
+    {
+        "card": {
+            "keywords": [],
+            "name": "Jhin",
+            "cardCode": "06RU002"
+        },
+        "amount": 2
+    },
+    {
+        "card": {
+            "keywords": ["Elusive", "Attach"],
+            "name": "Rainbowfish",
+            "cardCode": "05BC019"
+        },
+        "amount": 1
+    }
+]

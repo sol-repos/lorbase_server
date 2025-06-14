@@ -17,8 +17,7 @@ module.exports = class Card {
         return {
             setNumber: this.setNumber,
             factionIdentifier: this.factionIdentifier,
-            cardNumber: this.cardNumber,
-            cardCode: this.cardCode
+            cardNumber: this.cardNumber
         };
     }
 }
