@@ -1,0 +1,27 @@
+{
+  "name": "lorbase_server",
+  "version": "1.0.0",
+  "workspaces": [
+    "lorbase_api_server",
+    "lordata",
+    "lordraft_server"
+  ],
+  "scripts": {
+    "test": "npm test --workspaces",
+    "start": "concurrently \"npm start --workspace lorbase_api_server\" \"npm start --workspace lordraft_server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sol-repos/lorbase_server.git"
+  },
+  "author": "Sol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sol-repos/lorbase_server/issues"
+  },
+  "homepage": "https://github.com/sol-repos/lorbase_server#readme",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

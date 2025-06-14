@@ -746,7 +746,7 @@ exports.testingDeckJson = {
 
 exports.testingDeckWithCardCodeJson = {
     "format": 1,
-    "version": null,
+    "version": NaN,
     "cards": [
         {
             "card": {

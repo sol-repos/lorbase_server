@@ -1,7 +1,7 @@
 const { describe, it } = require("node:test");
 const assert = require("node:assert");
 const Deck = require("../deck");
-const { testingDeckCode, testingDeckJson } = require("./mocked-data");
+const { testingDeckCode, testingDeckJson } = require("../../shared/mocked-data");
 
 describe("Deck class", () => {
     it("should create an instance with correct properties", () => {

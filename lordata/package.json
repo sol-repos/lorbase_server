@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "lordata.js",
   "scripts": {
-    "test": "test"
+    "test": "node --test"
   },
   "author": "Sol",
   "license": "ISC",

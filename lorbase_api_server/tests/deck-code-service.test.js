@@ -2,7 +2,7 @@ const { describe, it, mock, beforeEach, afterEach } = require("node:test");
 const assert = require("node:assert");
 const { getDeckJsonFromDBByCode } = require("../deck-code-service");
 const { Deck } = require('../../lordata/lordata');
-const { testingDeckCode, testingDeckJson, dbCardResponse, testingDeckWithCardCodeJson, dbCardCopiesJson } = require("../../lordata/tests/mocked-data");
+const { testingDeckCode, testingDeckJson, dbCardResponse, testingDeckWithCardCodeJson, dbCardCopiesJson } = require("../../shared/mocked-data");
 
 const placeholders = Array(testingDeckJson.cards.length).fill('?').join(',');
 const mockDb = { all: (sql, params, callback) => { } };

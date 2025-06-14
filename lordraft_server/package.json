@@ -1,5 +1,5 @@
 {
-  "name": "lorbase_api_server",
+  "name": "lordraft_server",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -10,8 +10,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "sqlite3": "^5.1.7"
+    "socket.io": "^4.8.1"
   }
 }
