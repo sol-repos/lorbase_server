@@ -3,7 +3,7 @@ exports.testingDeckCode = "CUBACBQMAYAQODAPAMAQIBZ6AEDAYAQCAUFB3IIBEYAQGAIDAECAA
 
 exports.testingDeckJson = {
     "format": 1,
-    "version": null,
+    "version": NaN,
     "cards": [
         {
             "card": {

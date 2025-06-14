@@ -1,6 +1,7 @@
 const { describe, it } = require("node:test");
 const assert = require("node:assert");
 const Deck = require("../deck");
+const { testingDeckCode, testingDeckJson } = require("./mocked-data");
 
 describe("Deck class", () => {
     it("should create an instance with correct properties", () => {
@@ -16,11 +17,16 @@ describe("Deck class", () => {
     });
 
     it("should parse from a deck code correctly", () => {
-        const deckCode = "CUBACBQMAYAQODAPAMAQIBZ6AEDAYAQCAUFB3IIBEYAQGAIDAECAABIBAQAQKAIEBEHQCBQDCYAQMBIMAEDQMKQBA4GAYAIIBICQCCAGBAAQQAQVAEEASLIBBAGA4AIIAUCACCIKBUAQSARNAEEQSAQCAIDC4LYCAIAAEBQCAMAAWDICAQBAKCYCAYCAQFIDAEBSUKZMAMAQICA3FABQCBIECUVAGBAGAQDASAYEA4BRGUYDAUBAOFI2AMDAUGQ6FABQMBQLC4VQGBQABIPCUAYJAAQSEJYEAEAQSIZGFMCACAQJB4QCSBADBEBASUKXAUAQADANCULC2BQFBIJTUWDJQUA3AAIGAYGACBIIBEMRU";
-        const deck = Deck.fromCode(deckCode);
+        const deck = Deck.fromCode(testingDeckCode);
         
-        assert.strictEqual(deck.format, 1);
-        //assert.strictEqual(deck.version, NaN); // deck code has undefined version
-        // TODO: assert deck.cards contains expected cards
+        assert.strictEqual(deck.format, testingDeckJson.format);
+        assert.strictEqual(deck.version, testingDeckJson.version);
+        assert.strictEqual(deck.cards.length, testingDeckJson.cards.length);
+        testingDeckJson.cards.forEach((card, index) => {
+            assert.strictEqual(deck.cards[index].card.setNumber, card.card.setNumber);
+            assert.strictEqual(deck.cards[index].card.factionIdentifier, card.card.factionIdentifier);
+            assert.strictEqual(deck.cards[index].card.cardNumber, card.card.cardNumber);
+            assert.strictEqual(deck.cards[index].copies, card.copies);
+        });
     });
 });
