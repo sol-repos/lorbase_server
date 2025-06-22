@@ -1,8 +1,10 @@
-const { WebSocket } = require('ws');
+const { WebSocketServer } = require('ws');
 const { setupSocketEvents } = require('./socket-events');
 
 const PORT = 3001;
 
-const ws = new WebSocket('ws://localhost:' + PORT);
+const wss = new WebSocketServer({ port: PORT });
 
-setupSocketEvents(ws);
+setupSocketEvents(wss);
+
+console.log(`WebSocket server is running on ws://localhost:${PORT}`);
