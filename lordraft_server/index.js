@@ -16,4 +16,6 @@ const io = new Server(server, {
 
 setupSocketEvents(io);
 
-console.log(`socket.io server is running on ws://localhost:${PORT}`);
+server.listen(PORT, () => {
+    console.log(`socket.io server is running on ws://localhost:${PORT}`);
+});
