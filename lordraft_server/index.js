@@ -1,10 +1,19 @@
-const { WebSocketServer } = require('ws');
+const express = require('express');
+const http = require('http');
+const { Server } = require('socket.io');
 const { setupSocketEvents } = require('./socket-events');
 
 const PORT = 3001;
 
-const wss = new WebSocketServer({ port: PORT });
+const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+    cors: {
+        origin: "*", // Adjust as needed for security
+        methods: ["GET", "POST"]
+    }
+});
 
-setupSocketEvents(wss);
+setupSocketEvents(io);
 
-console.log(`WebSocket server is running on ws://localhost:${PORT}`);
+console.log(`socket.io server is running on ws://localhost:${PORT}`);
