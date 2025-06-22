@@ -1,9 +1,9 @@
 const SessionManager = require("./session-manager");
 
-exports.setupSocketEvents = (io) => {
+exports.setupSocketEvents = (ws) => {
     const sessionManager = new SessionManager();
 
-    io.on('connection', (socket) => {
+    ws.on('connection', (socket) => {
         console.log('User connected:', socket.id);
 
         socket.on('host', () => {
