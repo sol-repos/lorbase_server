@@ -14,7 +14,7 @@ exports.setupSocketEvents = (io) => {
             }
             socket.join(result.sessionId);
             socket.emit('hostSuccessful', result.sessionId);
-            console.log(`User ${socket.id} created session with ID: ${sessionId}`);
+            console.log(`User ${socket.id} created session with ID: ${result.sessionId}`);
         });
 
         socket.on('join', (sessionId) => {
