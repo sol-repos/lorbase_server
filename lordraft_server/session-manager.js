@@ -1,4 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
+const Errors = require('./errors');
 
 module.exports = class SessionManager {
     constructor() {
@@ -8,7 +9,7 @@ module.exports = class SessionManager {
     createSession(hostId) {
         const sessionId = uuidv4();
         if (this.sessions[sessionId]) {
-            return { success: false, error: 'SESSION_ID_TAKEN' };
+            return { success: false, error: Errors.SESSION_ID_TAKEN };
         }
         this.sessions[sessionId] = { host: hostId, joinedPlayer: null, createdAt: Date.now() };
         return { success: true, sessionId };
@@ -16,10 +17,10 @@ module.exports = class SessionManager {
 
     joinSession(sessionId, playerId) {
         if (!this.sessions[sessionId]) {
-            return { success: false, error: 'SESSION_NOT_FOUND' };
+            return { success: false, error: Errors.SESSION_NOT_FOUND };
         }
         if (this.sessions[sessionId].joinedPlayer) {
-            return { success: false, error: 'SESSION_FULL' };
+            return { success: false, error: Errors.SESSION_FULL };
         }
         this.sessions[sessionId].joinedPlayer = playerId;
         return { success: true };

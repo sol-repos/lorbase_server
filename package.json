@@ -23,8 +23,5 @@
   "description": "",
   "devDependencies": {
     "concurrently": "^9.1.2"
-  },
-  "dependencies": {
-    "uuid": "^11.1.0"
   }
 }

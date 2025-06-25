@@ -17,5 +17,5 @@ const io = new Server(server, {
 setupSocketEvents(io);
 
 server.listen(PORT, () => {
-    console.log(`Socket.IO server running on port ${PORT}`);
+    console.log(`Socket.IO server is running on http://localhost:${PORT}`);
 });
