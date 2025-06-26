@@ -22,8 +22,10 @@ exports.setupSocketEvents = (io) => {
         socket.on('join', (sessionIdInput) => {
             console.log(`User ${socket.id} called join with sessionId: ${sessionIdInput}`);
             let sessionId = sanitize(sessionIdInput);
+            console.log(`Sanitized: ${sessionId}`);
 
             const result = sessionManager.joinSession(sessionId, socket.id);
+            console.log(`result: ${result}`);
             if (!result.success) {
                 socket.emit('error', result.error);
                 return;
@@ -66,6 +68,6 @@ exports.setupSocketEvents = (io) => {
 
 /* Ensures a string value and removes anything that is not a letter, number, or dash */
 function sanitize(input) {
-    let unallowedChars = /[^a-zA-Z0-9-]/g;
+    let unallowedChars = /[^a-zA-Z0-9-_]/g;
     return (input + '').replaceAll(unallowedChars, '');
 }
