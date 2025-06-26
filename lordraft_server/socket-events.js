@@ -64,6 +64,6 @@ exports.setupSocketEvents = (io) => {
 
 /* Ensures a string value and removes anything that is not a letter, number, or dash */
 function sanitize(input) {
-    let unallowedChars = /[^a-zA-Z0-9-]/;
+    let unallowedChars = /[^a-zA-Z0-9-]/g;
     return (input + '').replaceAll(unallowedChars, '');
 }
