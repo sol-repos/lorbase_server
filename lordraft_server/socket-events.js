@@ -1,5 +1,5 @@
 const errors = require("./errors");
-const SessionManager = require("./session-manager");
+const { SessionManager } = require("./session-manager");
 
 exports.setupSocketEvents = (io) => {
     const sessionManager = new SessionManager();
