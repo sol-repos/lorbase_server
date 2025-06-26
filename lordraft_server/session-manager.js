@@ -47,6 +47,8 @@ module.exports.SessionManager = class SessionManager {
 
     joinSession(sessionId, playerId) {
         let session = this.sessions[sessionId];
+        console.log(JSON.stringify(this.sessions, null, 2));
+        console.log(sessionId);
         if (!session) {
             return { success: false, error: Errors.SESSION_NOT_FOUND };
         }
