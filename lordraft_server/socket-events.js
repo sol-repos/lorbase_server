@@ -25,6 +25,7 @@ exports.setupSocketEvents = (io) => {
             const result = sessionManager.joinSession(sessionId, socket.id);
             if (!result.success) {
                 socket.emit('error', result.error);
+                console.log(`User ${socket.id} failed to join session ${sessionId}: ${result.error}`);
                 return;
             }
             socket.join(result.session.id);
