@@ -20,12 +20,12 @@ exports.setupSocketEvents = (io) => {
         });
 
         socket.on('join', (sessionIdInput) => {
+            console.log(`User ${socket.id} called join with sessionId: ${sessionIdInput}`);
             let sessionId = sanitize(sessionIdInput);
 
             const result = sessionManager.joinSession(sessionId, socket.id);
             if (!result.success) {
                 socket.emit('error', result.error);
-                console.log(`User ${socket.id} failed to join session ${sessionId}: ${result.error}`);
                 return;
             }
             socket.join(result.session.id);
