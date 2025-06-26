@@ -20,16 +20,15 @@ exports.setupSocketEvents = (io) => {
         });
 
         socket.on('join', (sessionIdInput) => {
-            console.log(`User ${socket.id} called join with sessionId: ${sessionIdInput}`);
             let sessionId = sanitize(sessionIdInput);
-            console.log(`Sanitized: ${sessionId}`);
 
             const result = sessionManager.joinSession(sessionId, socket.id);
-            console.log(`result: ${result}`);
+            console.log(result.success);
             if (!result.success) {
                 socket.emit('error', result.error);
                 return;
             }
+            console.log(`User ${socket.id} joining session ${result.session.id}`);
             socket.join(result.session.id);
             socket.to(result.session.id).emit('playerJoined');
             socket.emit('joinSuccessful', result.session.getSessionInfoJson());
