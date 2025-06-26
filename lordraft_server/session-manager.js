@@ -36,19 +36,16 @@ module.exports.SessionManager = class SessionManager {
     }
 
     createSession(hostId) {
-        const sessionId = uuidv4();
-        if (this.sessions[sessionId]) {
+        let session = new Session(hostId);
+        if (this.sessions[session.sessionId]) {
             return { success: false, error: Errors.SESSION_ID_TAKEN };
         }
-        let session = new Session(hostId)
-        this.sessions[sessionId] = session;
+        this.sessions[session.sessionId] = session;
         return { success: true, session: session };
     }
 
     joinSession(sessionId, playerId) {
         let session = this.sessions[sessionId];
-        console.log(JSON.stringify(this.sessions, null, 2));
-        console.log(sessionId);
         if (!session) {
             return { success: false, error: Errors.SESSION_NOT_FOUND };
         }
