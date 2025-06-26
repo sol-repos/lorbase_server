@@ -1,3 +1,5 @@
+const Constants = require("./constants");
+
 module.exports = class LorbaseService {
     static async getDeckJsonFromCode(deckCode) {
         const res = await fetch(`${Constants.lorbaseUrl}/deckCode/${deckCode}`);
