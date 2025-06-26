@@ -54,7 +54,7 @@ exports.setupSocketEvents = (io) => {
 
             result.session.gameState.updateCubeDeck(deckJson);
             io.to(result.session.id).emit('cubeDeckUpdated', deckJson);
-            console.log(`User ${socket.id} submitted deck code for session ${sessionId}: ${deckCode}`);
+            console.log(`User ${socket.id} submitted deck code for session ${result.session.id}: ${deckCode}`);
         });
     });
 
