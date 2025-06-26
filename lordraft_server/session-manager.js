@@ -1,7 +1,36 @@
 const { v4: uuidv4 } = require('uuid');
 const Errors = require('./errors');
+const GameState = require('./game-state');
 
-module.exports = class SessionManager {
+class Session {
+    constructor(hostId) {
+        this.id = uuidv4();
+        this.host = hostId;
+        this.joinedPlayer = null;
+        this.createdAt = Date.now();
+        this.gameState = new GameState();
+    }
+
+    isFull() {
+        return this.joinedPlayer !== null;
+    }
+
+    isExpired() {
+        const oneHour = 60 * 60 * 1000;
+        return (Date.now() - this.createdAt) > oneHour;
+    }
+
+    getSessionInfoJson() {
+        return {
+            id: this.id,
+            createdAt: this.createdAt,
+            gameState: this.gameState.toJson(),
+        };
+    }
+}
+module.exports.Session = Session;
+
+module.exports.SessionManager = class SessionManager {
     constructor() {
         this.sessions = {};
     }
@@ -11,26 +40,36 @@ module.exports = class SessionManager {
         if (this.sessions[sessionId]) {
             return { success: false, error: Errors.SESSION_ID_TAKEN };
         }
-        this.sessions[sessionId] = { host: hostId, joinedPlayer: null, createdAt: Date.now() };
-        return { success: true, sessionId };
+        let session = new Session(hostId)
+        this.sessions[sessionId] = session;
+        return { success: true, session: session };
     }
 
     joinSession(sessionId, playerId) {
-        if (!this.sessions[sessionId]) {
+        let session = this.sessions[sessionId];
+        if (!session) {
             return { success: false, error: Errors.SESSION_NOT_FOUND };
         }
-        if (this.sessions[sessionId].joinedPlayer) {
+        if (session.joinedPlayer) {
             return { success: false, error: Errors.SESSION_FULL };
         }
         this.sessions[sessionId].joinedPlayer = playerId;
-        return { success: true };
+        return { success: true, session: session };
+    }
+
+    getSessionByPlayerId(playerId) {
+        for (const sessionId in this.sessions) {
+            let session = this.sessions[sessionId];
+            if (session.host === playerId || session.joinedPlayer === playerId) {
+                return { success: true, session: session };
+            }
+        }
+        return { success: false, error: Errors.SESSION_NOT_FOUND };
     }
 
     cleanupSessions() {
-        const now = Date.now();
-        const oneHour = 60 * 60 * 1000;
         for (const sessionId in this.sessions) {
-            if (this.sessions[sessionId].createdAt + oneHour < now) {
+            if (this.sessions[sessionId].isExpired()) {
                 delete this.sessions[sessionId];
             }
         }
