@@ -1,4 +1,5 @@
 const errors = require("./errors");
+const LorbaseService = require("./lorbase-service");
 const { SessionManager } = require("./session-manager");
 
 exports.setupSocketEvents = (io) => {

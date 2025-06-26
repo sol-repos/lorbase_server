@@ -1,4 +1,4 @@
-class LorbaseService {
+module.exports = class LorbaseService {
     static async getDeckJsonFromCode(deckCode) {
         const res = await fetch(`${Constants.lorbaseUrl}/deckCode/${deckCode}`);
         if (!res.ok) {
