@@ -37,10 +37,10 @@ module.exports.SessionManager = class SessionManager {
 
     createSession(hostId) {
         let session = new Session(hostId);
-        if (this.sessions[session.sessionId]) {
+        if (this.sessions[session.id]) {
             return { success: false, error: Errors.SESSION_ID_TAKEN };
         }
-        this.sessions[session.sessionId] = session;
+        this.sessions[session.id] = session;
         return { success: true, session: session };
     }
 
